@@ -1,0 +1,31 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Speakers.IndexModel
+@{
+    ViewData["Title"] = "Speakers";
+}
+
+<h2>Speakers</h2>
+
+<a href="/Speakers/Create">Add New Speaker</a>
+
+<table border="1" cellpadding="8" style="margin-top:10px; border-collapse:collapse;">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var s in Model.Speakers)
+    {
+        <tr>
+            <td>@s.Name</td>
+            <td>@s.Type</td>
+            <td>@s.Price.ToString("C")</td>
+            <td>
+                <a href="/Speakers/Edit?id=@s.Id">Edit</a> |
+                <a href="/Speakers/Delete?id=@s.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
