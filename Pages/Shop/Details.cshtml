@@ -1,0 +1,35 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Shop.DetailsModel
+@{
+    ViewData["Title"] = "Speaker Details";
+}
+
+@if (Model.Speaker == null)
+{
+    <div class="container mt-3">
+        <div class="alert alert-warning">Speaker not found.</div>
+    </div>
+}
+else
+{
+    <div class="container mt-3">
+        <img class="img-fluid mb-3"
+             style="max-width:300px;border-radius:8px;"
+             src="@Url.Content("~/images/speakers/" + (string.IsNullOrEmpty(Model.Speaker.ImageFileName) ? "placeholder.png" : Model.Speaker.ImageFileName))" />
+
+        <h2>@Model.Speaker.Name</h2>
+        <h5 class="text-muted">@Model.Speaker.Type Speaker</h5>
+
+        <p class="mt-3">@Model.Speaker.Description</p>
+
+        <p class="fs-4 fw-bold">@Model.Speaker.Price.ToString("C")</p>
+
+        <form method="post" asp-page-handler="AddToCart">
+            <input type="hidden" name="id" value="@Model.Speaker.Id" />
+            <button type="submit" class="btn btn-primary me-2">Add to Cart</button>
+            <a asp-page="/Shop/Index" class="btn btn-outline-secondary">Back to Shop</a>
+        </form>
+    </div>
+}
+
+

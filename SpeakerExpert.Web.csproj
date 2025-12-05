@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SpeakerExpert.Business\SpeakerExpert.Business.csproj" />
     <ProjectReference Include="..\SpeakerExpert.Models\SpeakerExpert.Models.csproj" />
   </ItemGroup>

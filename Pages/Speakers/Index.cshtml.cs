@@ -9,10 +9,6 @@ namespace SpeakerExpert.Web.Pages.Speakers
     {
         public List<Speaker> Speakers { get; set; } = new List<Speaker>();
 
-        public void OnGet()
-        {
-            var service = new SpeakerService();
-            Speakers = service.GetAllSpeakers();
-        }
+      
     }
 }

@@ -1,22 +1,128 @@
-html {
-  font-size: 14px;
+/* ==== SpeakerExpert Theme ==== */
+
+/* Colors */
+:root {
+    --speaker-purple: #804180;
+    --speaker-blue: #1e90ff;
+    --speaker-black: #0b0b10;
+    --speaker-white: #ffffff;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Global background + text */
 body {
-  margin-bottom: 60px;
+    background-color: var(--speaker-black);
+    color: var(--speaker-white);
+}
+
+/* Brand navbar */
+.bg-speaker-brand {
+    background: linear-gradient(90deg, #804180, #1e90ff);
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+}
+
+    .navbar .nav-link:hover {
+        text-decoration: underline;
+    }
+
+/* Main content card-ish feel */
+.container h2,
+.container h3 {
+    color: var(--speaker-white);
+}
+
+/* Cards */
+.card {
+    background-color: #161621;
+    color: var(--speaker-white);
+    border: 1px solid #2a2a36;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    background-color: rgba(128, 65, 128, 0.15);
+    border-bottom: 1px solid #2a2a36;
+}
+
+/* Tables */
+.table {
+    color: var(--speaker-white);
+}
+
+    .table thead {
+        background-color: #1d1d29;
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #171722;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #222234;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--speaker-blue);
+    border-color: var(--speaker-blue);
+}
+
+    .btn-primary:hover {
+        background-color: #1870c4;
+        border-color: #1870c4;
+    }
+
+.btn-success {
+    background-color: var(--speaker-purple);
+    border-color: var(--speaker-purple);
+}
+
+    .btn-success:hover {
+        background-color: #6a356a;
+        border-color: #6a356a;
+    }
+
+.btn-outline-secondary {
+    color: var(--speaker-white);
+    border-color: #3b3b4d;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #3b3b4d;
+        color: var(--speaker-white);
+    }
+
+.btn-outline-danger {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+    .btn-outline-danger:hover {
+        background-color: #ff6b6b;
+        color: var(--speaker-black);
+    }
+
+/* Forms */
+.form-control,
+.form-select,
+textarea {
+    background-color: #161621;
+    border-color: #343449;
+    color: var(--speaker-white);
+}
+
+    .form-control:focus,
+    .form-select:focus,
+    textarea:focus {
+        background-color: #161621;
+        border-color: var(--speaker-blue);
+        box-shadow: 0 0 0 0.2rem rgba(30, 144, 255, 0.25);
+        color: var(--speaker-white);
+    }
+
+/* Validation text */
+.text-danger {
+    color: #ff6b6b !important;
 }

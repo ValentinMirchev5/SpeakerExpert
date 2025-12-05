@@ -11,10 +11,5 @@ namespace SpeakerExpert.Pages
         {
             _logger = logger;
         }
-
-        public void OnGet()
-        {
-
-        }
     }
 }
