@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36511.14 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Web", "SpeakerExpert.Web.csproj", "{76ED34F7-89A8-4955-8D3C-F8B8C8AC9455}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EBA510A4-7543-47E3-A8DD-B3BD97A93960} = {EBA510A4-7543-47E3-A8DD-B3BD97A93960}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Business", "..\SpeakerExpert.Business\SpeakerExpert.Business.csproj", "{642395F9-0B01-49D6-82C2-7E1798D53D9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Business", "SpeakerExpert.Business\SpeakerExpert.Business.csproj", "{642395F9-0B01-49D6-82C2-7E1798D53D9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Data", "..\SpeakerExpert.Data\SpeakerExpert.Data.csproj", "{EBA510A4-7543-47E3-A8DD-B3BD97A93960}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Models", "SpeakerExpert.Models\SpeakerExpert.Models.csproj", "{C7986725-F047-45E3-9EC5-940080047452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Models", "..\SpeakerExpert.Models\SpeakerExpert.Models.csproj", "{C7986725-F047-45E3-9EC5-940080047452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakerExpert.Data", "SpeakerExpert.Data\SpeakerExpert.Data.csproj", "{EBA510A4-7543-47E3-A8DD-B3BD97A93960}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +28,14 @@ Global
 		{642395F9-0B01-49D6-82C2-7E1798D53D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{642395F9-0B01-49D6-82C2-7E1798D53D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{642395F9-0B01-49D6-82C2-7E1798D53D9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7986725-F047-45E3-9EC5-940080047452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7986725-F047-45E3-9EC5-940080047452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7986725-F047-45E3-9EC5-940080047452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7986725-F047-45E3-9EC5-940080047452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA510A4-7543-47E3-A8DD-B3BD97A93960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
