@@ -1,0 +1,76 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Shop.MyOrdersModel
+
+<div class="container py-4 myorders">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+            <h1 class="page-title mb-1">My Orders</h1>
+            <div class="page-subtitle">Your past purchases and order details.</div>
+        </div>
+
+        <a class="btn btn-outline-primary btn-sm" asp-page="/Shop/Index">
+            ← Back to Shop
+        </a>
+    </div>
+
+    @if (Model.Orders == null || !Model.Orders.Any())
+    {
+        <div class="empty-state">
+            <div class="empty-icon">🧾</div>
+            <div class="empty-title">No orders yet</div>
+            <div class="empty-text">When you checkout, your orders will show up here.</div>
+            <a class="btn btn-primary mt-3" asp-page="/Shop/Index">Start Shopping</a>
+        </div>
+    }
+    else
+    {
+        <div class="orders-grid">
+            @foreach (var order in Model.Orders)
+            {
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-number">Order #@order.Id</div>
+                            <div class="order-date">@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</div>
+                        </div>
+
+                        <div class="order-total">
+                            <div class="total-label">Total</div>
+                            <div class="total-value">@order.Total.ToString("C")</div>
+                        </div>
+                    </div>
+
+                    @if (order.Items == null || !order.Items.Any())
+                    {
+                        <div class="order-empty">
+                            No items were saved for this order.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="order-items">
+                            <div class="items-head">
+                                <span>Item</span>
+                                <span class="text-end">Price</span>
+                                <span class="text-end">Qty</span>
+                                <span class="text-end">Subtotal</span>
+                            </div>
+
+                            @foreach (var item in order.Items)
+                            {
+                                <div class="items-row">
+                                    <div class="item-name">@item.SpeakerName</div>
+                                    <div class="text-end">@item.UnitPrice.ToString("C")</div>
+                                    <div class="text-end">@item.Quantity</div>
+                                    <div class="text-end fw-semibold">@((item.UnitPrice * item.Quantity).ToString("C"))</div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+

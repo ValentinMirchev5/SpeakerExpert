@@ -1,0 +1,56 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Shop.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="container mt-4" style="max-width:850px;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="m-0">Checkout</h1>
+        <a class="btn btn-outline-primary" asp-page="/Shop/Cart">Back to Cart</a>
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Message))
+    {
+        <div class="alert alert-danger">@Model.Message</div>
+    }
+
+    @if (Model.Cart.Count == 0)
+    {
+        <div class="alert alert-secondary">Your cart is empty.</div>
+    }
+    else
+    {
+        <div class="card p-3">
+            <table class="table table-dark align-middle">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th style="width:120px;">Price</th>
+                        <th style="width:80px;">Qty</th>
+                        <th style="width:140px;">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Cart)
+                    {
+                        <tr>
+                            <td>@item.SpeakerName</td>
+                            <td>€@item.UnitPrice</td>
+                            <td>@item.Quantity</td>
+                            <td>€@(item.UnitPrice* item.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="fs-5 fw-bold">Total: €@Model.Total</div>
+                <form method="post">
+                    <button class="btn btn-primary">Confirm Purchase</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,109 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Shop.IndexModel
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="m-0">Shop Speakers</h1>
+    </div>
+
+    <form method="get" class="row g-3 mb-4">
+
+        <!-- Search -->
+        <div class="col-md-4">
+            <label class="form-label">Search</label>
+            <input class="form-control"
+                   name="Search"
+                   value="@Model.Search"
+                   placeholder="Search by name or description..." />
+        </div>
+
+        <!-- Type -->
+        <div class="col-md-2">
+            <label class="form-label">Type</label>
+            <select class="form-select" name="Type">
+                <option value="All" selected="@(Model.Type == null || Model.Type == "All")">All</option>
+                <option value="Car" selected="@(Model.Type == "Car")">Car</option>
+                <option value="Portable" selected="@(Model.Type == "Portable")">Portable</option>
+                <option value="PC" selected="@(Model.Type == "PC")">PC</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Min €</label>
+            <input class="form-control" type="number" step="0.01" name="MinPrice" value="@Model.MinPrice" />
+        </div>
+
+        <div class="col-md-2">
+            <label class="form-label">Max €</label>
+            <input class="form-control" type="number" step="0.01" name="MaxPrice" value="@Model.MaxPrice" />
+        </div>
+
+        <div class="col-md-2">
+            <label class="form-label">Sort</label>
+            <select class="form-select" name="Sort">
+                <option value="name_asc" selected="@(Model.Sort == "name_asc")">Name (A-Z)</option>
+                <option value="name_desc" selected="@(Model.Sort == "name_desc")">Name (Z-A)</option>
+                <option value="price_asc" selected="@(Model.Sort == "price_asc")">Price (Low-High)</option>
+                <option value="price_desc" selected="@(Model.Sort == "price_desc")">Price (High-Low)</option>
+                <option value="stock_desc" selected="@(Model.Sort == "stock_desc")">Stock (High-Low)</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 d-flex align-items-end">
+            
+        </div>
+
+        <!-- Apply -->
+        <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit">
+                Apply filters
+            </button>
+        </div>
+
+    </form>
+
+
+    @if (Model.Items.Count == 0)
+    {
+        <div class="alert alert-secondary">No speakers found.</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var sp in Model.Items)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top"
+                             style="height:180px; object-fit:cover;"
+                             src="~/images/speakers/@Model.GetImageFile(sp)" />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@sp.Name</h5>
+                            <div class="text-muted">@sp.Type Speaker</div>
+                            <p class="mt-2">@sp.Description</p>
+                            <div class="fw-bold">€@sp.Price</div>
+                            <div class="small text-muted">In stock: @sp.Stock</div>
+                        </div>
+
+                        <div class="card-footer d-flex gap-2">
+                            <a class="btn btn-outline-primary w-100"
+                               asp-page="/Shop/Details"
+                               asp-route-id="@sp.Id">
+                                Details
+                            </a>
+
+                            <form method="post" asp-page-handler="AddToCart" class="w-100">
+                                <input type="hidden" name="id" value="@sp.Id" />
+                                <button class="btn btn-primary w-100">Add to Cart</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

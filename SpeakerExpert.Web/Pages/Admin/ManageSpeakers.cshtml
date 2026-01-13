@@ -1,0 +1,179 @@
+﻿@page
+@model SpeakerExpert.Web.Pages.Admin.ManageSpeakersModel
+@{
+    ViewData["Title"] = "Manage Speakers";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="m-0">Employee — Manage Speakers</h1>
+        <a class="btn btn-outline-primary" asp-page="/Shop/Index">Back to Shop</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="card p-3">
+                <h5>Add Speaker</h5>
+
+                <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+                <form method="post" asp-page-handler="Add" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label asp-for="NewSpeaker.Name" class="form-label"></label>
+                        <input asp-for="NewSpeaker.Name" class="form-control" />
+                        <span asp-validation-for="NewSpeaker.Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NewSpeaker.Type" class="form-label"></label>
+                        <input asp-for="NewSpeaker.Type" class="form-control" />
+                        <span asp-validation-for="NewSpeaker.Type" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NewSpeaker.Description" class="form-label"></label>
+                        <textarea asp-for="NewSpeaker.Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="NewSpeaker.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NewSpeaker.Price" class="form-label"></label>
+                        <input asp-for="NewSpeaker.Price" type="number" step="0.01" class="form-control" />
+                        <span asp-validation-for="NewSpeaker.Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NewSpeaker.Stock" class="form-label"></label>
+                        <input asp-for="NewSpeaker.Stock" type="number" class="form-control" />
+                        <span asp-validation-for="NewSpeaker.Stock" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image (optional)</label>
+                        <input class="form-control" type="file" name="UploadImage" />
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" asp-for="UploadImageForNew" />
+                            <label class="form-check-label" asp-for="UploadImageForNew">
+                                Upload a custom image for this speaker
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-2">Add</button>
+                </form>
+
+            </div>
+
+            @if (Model.EditSpeaker != null && Model.EditSpeaker.Id > 0)
+            {
+                <div class="card p-3 mt-4">
+                    <h5>Edit Speaker (ID @Model.EditSpeaker.Id)</h5>
+
+                    <form method="post" asp-page-handler="Update" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="EditSpeaker.Id" />
+
+                        <div class="mb-2">
+                            <label class="form-label">Name</label>
+                            <input class="form-control" asp-for="EditSpeaker.Name" />
+                            <span asp-validation-for="EditSpeaker.Name" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-2">
+                            <label class="form-label">Type</label>
+                            <input class="form-control" asp-for="EditSpeaker.Type" />
+                            <span asp-validation-for="EditSpeaker.Type" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" asp-for="EditSpeaker.Description"></textarea>
+                            <span asp-validation-for="EditSpeaker.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Price (€)</label>
+                            <input class="form-control" type="number" step="0.01" asp-for="EditSpeaker.Price" />
+                            <span asp-validation-for="EditSpeaker.Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Stock</label>
+                            <input class="form-control" type="number" asp-for="EditSpeaker.Stock" />
+
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">New Image (optional)</label>
+                            <input class="form-control" type="file" name="UploadImage" />
+                            <div class="small text-muted mt-1">
+                                If you don’t upload a file, the current image stays.
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 mt-2">Save</button>
+                    </form>
+                </div>
+            }
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card p-3">
+                <h5 class="mb-3">Speakers</h5>
+
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th style="width:60px;">ID</th>
+                                <th>Name</th>
+                                <th style="width:110px;">Type</th>
+                                <th style="width:110px;">Price</th>
+                                <th style="width:90px;">Stock</th>
+                                <th style="width:160px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sp in Model.Speakers)
+                            {
+                                <tr>
+                                    <td>@sp.Id</td>
+                                    <td>@sp.Name</td>
+                                    <td>@sp.Type</td>
+                                    <td>€@sp.Price</td>
+                                    <td>@sp.Stock</td>
+                                    <td class="d-flex gap-2">
+                                        <form method="post" asp-page-handler="StartEdit">
+                                            <input type="hidden" name="id" value="@sp.Id" />
+                                            <button class="btn btn-outline-primary btn-sm">Edit</button>
+                                        </form>
+
+                                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Delete this speaker?');">
+                                            <input type="hidden" name="id" value="@sp.Id" />
+                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                        <form method="post" asp-page-handler="Restock" class="d-inline">
+                                            <input type="hidden" name="id" value="@sp.Id" />
+                                            <input type="hidden" name="amount" value="5" />
+                                            <button class="btn btn-success btn-sm">+5</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="small text-muted">
+                    Images: if no image exists, Shop will show <b>placeholder.png</b>.
+                </div>
+                @section Scripts {
+                    <partial name="_ValidationScriptsPartial" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

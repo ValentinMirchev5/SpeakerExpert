@@ -1,0 +1,226 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+:root {
+    --purple: #804180;
+    --blue: #1E90FF;
+    --black: #0b0b10;
+    --white: #ffffff;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--purple), #2b2b40, var(--blue));
+}
+
+a, .nav-link {
+    color: var(--white) !important;
+}
+
+    a:hover, .nav-link:hover {
+        color: var(--blue) !important;
+    }
+
+.card {
+    background: #141421;
+    border: 1px solid #2a2a40;
+    color: var(--white);
+}
+
+.btn-primary {
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+    .btn-primary:hover {
+        background: #6a356a;
+        border-color: #6a356a;
+    }
+
+.btn-outline-primary {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+    .btn-outline-primary:hover {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: var(--black);
+    }
+
+.table {
+    color: var(--white);
+}
+
+    .table thead {
+        background: #1d1d2e;
+    }
+
+.form-control, .form-select {
+    background: #0f0f18;
+    color: var(--white);
+    border: 1px solid #2a2a40;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--blue);
+        box-shadow: none;
+    }
+/* ===== My Orders page ===== */
+.myorders .page-title {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.myorders .page-subtitle {
+    color: rgba(255,255,255,.7);
+    font-size: 0.95rem;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+@media (min-width: 992px) {
+    .orders-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.order-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.order-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(90deg, rgba(128,65,128,.25), rgba(0,120,255,.18));
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.order-number {
+    color: #fff;
+    font-weight: 800;
+}
+
+.order-date {
+    color: rgba(255,255,255,.75);
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+.order-total {
+    text-align: right;
+    min-width: 140px;
+}
+
+.total-label {
+    color: rgba(255,255,255,.75);
+    font-size: 0.85rem;
+}
+
+.total-value {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.order-items {
+    padding: 12px 16px 16px 16px;
+}
+
+.items-head {
+    display: grid;
+    grid-template-columns: 1.6fr .7fr .4fr .7fr;
+    gap: 10px;
+    color: rgba(255,255,255,.75);
+    font-size: .85rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.items-row {
+    display: grid;
+    grid-template-columns: 1.6fr .7fr .4fr .7fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    color: rgba(255,255,255,.92);
+}
+
+    .items-row:last-child {
+        border-bottom: none;
+    }
+
+.item-name {
+    font-weight: 700;
+    color: #fff;
+}
+
+.order-empty {
+    padding: 14px 16px;
+    color: rgba(255,255,255,.75);
+    font-style: italic;
+}
+
+/* Empty state */
+.empty-state {
+    margin-top: 18px;
+    border-radius: 14px;
+    padding: 26px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.empty-title {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.empty-text {
+    color: rgba(255,255,255,.75);
+    margin-top: 6px;
+}
+

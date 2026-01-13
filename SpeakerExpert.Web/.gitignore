@@ -1,0 +1,46 @@
+##################################
+# Visual Studio / .NET
+##################################
+
+# Visual Studio cache
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+##################################
+# Build output
+##################################
+
+# Build folders (ALL projects)
+**/bin/
+**/obj/
+
+##################################
+# ASP.NET Core - Secrets
+##################################
+
+# Local development settings (often contain secrets)
+**/appsettings.Development.json
+**/appsettings.*.Development.json
+
+# User Secrets (normally outside repo, ignore just in case)
+secrets.json
+
+##################################
+# Publish / Deployment
+##################################
+
+# Publish profiles may contain credentials or machine paths
+**/Properties/PublishProfiles/
+**/Properties/ServiceDependencies/
+
+##################################
+# OS junk
+##################################
+
+Thumbs.db
+.DS_Store
