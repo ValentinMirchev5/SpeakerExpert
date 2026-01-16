@@ -8,7 +8,6 @@ using SpeakerExpert.Business.Domain;
 
 public interface IReviewService
 {
-    //Adding methods for managing reviews
     List<Review> GetBySpeakerId(int speakerId);
     void Add(Review review);
 }
