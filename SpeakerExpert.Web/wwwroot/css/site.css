@@ -224,3 +224,11 @@ a, .nav-link {
     margin-top: 6px;
 }
 
+/* Make "Details" button text readable on hover/focus */
+.btn.btn-outline-primary:hover,
+.btn.btn-outline-primary:focus,
+.btn.btn-outline-primary:active,
+.btn.btn-outline-primary:focus-visible {
+    color: #fff !important;
+}
+
