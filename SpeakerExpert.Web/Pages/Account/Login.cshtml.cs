@@ -28,7 +28,14 @@ namespace SpeakerExpert.Web.Pages.Account
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
+            {
+                Message = "Invalid user email/password.";
+                return Page();
+            }
+
             var user = _auth.Login(Email, Password);
+
             if (user == null)
             {
                 Message = "Invalid email or password.";
@@ -47,7 +54,9 @@ namespace SpeakerExpert.Web.Pages.Account
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+            TempData["SuccessMessage"] = "Login successful!";
             return RedirectToPage("/Shop/Index");
+
         }
     }
 }

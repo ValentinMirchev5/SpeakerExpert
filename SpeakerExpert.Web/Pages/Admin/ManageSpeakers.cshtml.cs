@@ -115,8 +115,11 @@ namespace SpeakerExpert.Web.Pages.Admin
         public IActionResult OnPostDelete(int id)
         {
             _service.Delete(id);
+
+            TempData["SuccessMessage"] = "Speaker deleted successfully!";
             return RedirectToPage();
         }
+
 
         private string SaveImage(IFormFile file)
         {
@@ -135,13 +138,19 @@ namespace SpeakerExpert.Web.Pages.Admin
         public IActionResult OnPostRestock(int id, int amount)
         {
             var sp = _service.GetById(id);
-            if (sp == null) return RedirectToPage();
+            if (sp == null)
+            {
+                TempData["ErrorMessage"] = "Speaker not found.";
+                return RedirectToPage();
+            }
 
             sp.Stock += amount;
             _service.Update(sp);
 
+            TempData["SuccessMessage"] = $"Restocked {sp.Name} (+{amount}). New stock: {sp.Stock}.";
             return RedirectToPage();
         }
+
 
     }
 }
