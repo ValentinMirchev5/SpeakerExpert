@@ -21,8 +21,13 @@ namespace SpeakerExpert.Web.Pages.Shop
             var sp = _speakers.GetById(id);
             if (sp == null) return RedirectToPage();
 
-            var cart = HttpContext.Session.GetObject<List<CartItem>>(CartKey);
-            cart = new List<CartItem>(cart ?? new());
+            if (sp.Stock <= 0)
+            {
+                TempData["CartError"] = "This item is out of stock and cannot be added to the cart.";
+                return RedirectToPage(new { Search = Search, Type = Type, MinPrice = MinPrice, MaxPrice = MaxPrice, Sort = Sort });
+            }
+
+            var cart = HttpContext.Session.GetObject<List<CartItem>>(CartKey) ?? new List<CartItem>();
 
             var item = cart.FirstOrDefault(x => x.SpeakerId == id);
             if (item == null)
@@ -42,8 +47,9 @@ namespace SpeakerExpert.Web.Pages.Shop
 
             HttpContext.Session.SetObject(CartKey, cart);
 
-            return RedirectToPage(new { Search = Search, Type = Type });
+            return RedirectToPage(new { Search = Search, Type = Type, MinPrice = MinPrice, MaxPrice = MaxPrice, Sort = Sort });
         }
+
 
         public List<Speaker> Items { get; set; } = new();
 
