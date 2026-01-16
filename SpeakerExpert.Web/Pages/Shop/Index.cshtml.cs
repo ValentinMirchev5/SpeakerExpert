@@ -10,6 +10,9 @@ namespace SpeakerExpert.Web.Pages.Shop
     {
         private readonly ISpeakerService _speakers;
         private const string CartKey = "cart";
+        public Dictionary<int, double?> AvgRatingBySpeakerId { get; set; } = new();
+        public Dictionary<int, int> ReviewCountBySpeakerId { get; set; } = new();
+
 
         public IndexModel(ISpeakerService speakers)
         {
@@ -109,6 +112,7 @@ namespace SpeakerExpert.Web.Pages.Shop
             };
 
             Items = all;
+
         }
 
 

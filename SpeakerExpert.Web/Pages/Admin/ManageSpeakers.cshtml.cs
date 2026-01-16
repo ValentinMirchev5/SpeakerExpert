@@ -60,8 +60,12 @@ namespace SpeakerExpert.Web.Pages.Admin
 
             _service.Add(NewSpeaker);
 
+            // Flash message
+            TempData["SuccessMessage"] = "Speaker added successfully!";
+
             // IMPORTANT: redirect clears ModelState so old errors disappear
             return RedirectToPage();
+
         }
 
         public IActionResult OnPostStartEdit(int id)
@@ -92,8 +96,13 @@ namespace SpeakerExpert.Web.Pages.Admin
             try
             {
                 _service.Update(EditSpeaker);
+
+                // Flash message
+                TempData["SuccessMessage"] = "Speaker updated successfully!";
+
                 return RedirectToPage();
             }
+
             catch (ArgumentException ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
