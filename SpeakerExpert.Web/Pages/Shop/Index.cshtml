@@ -51,12 +51,14 @@
 
         </div>
 
-        <button class="btn btn-primary w-100 mt-3">
-            Apply filters
-        </button>
+        <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-primary flex-grow-1" type="submit">Apply filters</button>
+
+            <!-- clears querystring by going to /Shop with no params -->
+            <a class="btn btn-outline-secondary" asp-page="/Shop/Index">Clear</a>
+        </div>
+
     </form>
-
-
 
     @if (Model.Items.Count == 0)
     {
