@@ -57,7 +57,7 @@ namespace SpeakerExpert.Web.Pages.Shop
         public string? Search { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string? Type { get; set; } // "Car", "Portable", "PC"
+        public string? Type { get; set; } 
 
 
         [BindProperty(SupportsGet = true)] public decimal? MinPrice { get; set; }
@@ -80,10 +80,12 @@ namespace SpeakerExpert.Web.Pages.Shop
             }
 
             // Type
-            if (!string.IsNullOrWhiteSpace(Type) && Type != "All")
+            if (!string.IsNullOrWhiteSpace(Type))
             {
-                all = all.Where(x => x.Type == Type).ToList();
+                string t = Type.Trim().ToLower();
+                all = all.Where(x => (x.Type ?? "").ToLower().Contains(t)).ToList();
             }
+
 
             // Price range
             if (MinPrice.HasValue)

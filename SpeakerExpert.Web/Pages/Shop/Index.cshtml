@@ -26,15 +26,9 @@
         </div>
 
         <!-- Type -->
-        <div class="col-md-2">
-            <label class="form-label">Type</label>
-            <select class="form-select" name="Type">
-                <option value="All" selected="@(Model.Type == null || Model.Type == "All")">All</option>
-                <option value="Car" selected="@(Model.Type == "Car")">Car</option>
-                <option value="Portable" selected="@(Model.Type == "Portable")">Portable</option>
-                <option value="PC" selected="@(Model.Type == "PC")">PC</option>
-            </select>
-        </div>
+        <label class="form-label">Type</label>
+        <input class="form-control" name="Type" value="@Model.Type" />
+
         <div class="col-md-2">
             <label class="form-label">Min €</label>
             <input class="form-control" type="number" step="0.01" name="MinPrice" value="@Model.MinPrice" />
