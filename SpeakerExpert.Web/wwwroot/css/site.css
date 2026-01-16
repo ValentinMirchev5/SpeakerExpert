@@ -231,4 +231,24 @@ a, .nav-link {
 .btn.btn-outline-primary:focus-visible {
     color: #fff !important;
 }
+/* Cart qty input readable on dark tables */
+/* Cart qty input readable inside .table-dark */
+.table-dark input.form-control.cart-qty,
+.table-dark input.form-control.cart-qty:focus {
+    background-color: #fff !important;
+    color: #000 !important;
+    caret-color: #000 !important;
+    border: 1px solid rgba(0,0,0,.35) !important;
+}
 
+    /* Make sure placeholder (if any) isn't "invisible" */
+    .table-dark input.form-control.cart-qty::placeholder {
+        color: rgba(0,0,0,.6) !important;
+    }
+
+    /* Fix number spinner color/visibility (Chromium/Edge) */
+    .table-dark input.form-control.cart-qty::-webkit-inner-spin-button,
+    .table-dark input.form-control.cart-qty::-webkit-outer-spin-button {
+        opacity: 1;
+        filter: none;
+    }
